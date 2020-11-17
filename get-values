@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-set -x
+#set -x
 if [ -z "$1" ] ; then
    echo "Need uri of shar script"
    exit 1
@@ -21,5 +21,5 @@ if [ $? -ne 0 ] ; then
    cat /log
    exit 1
 fi
-/lice-kill /montavista/ || true
+/lice-kill /montavista/ 2>/dev/null || true
 /getVersioning /montavista/
