@@ -7,8 +7,12 @@ fi
 
 install=$1
 
-
-$1/montavista/bin/mvl-fetch --version
-$(ls $1/montavista/tools/*/bin/*-gcc | head -n 1) --version | head -n 1
-grep version $1/features/com.mvista.devtools.devrocket.*/feature.xml | cut -d : -f 2 | head -n 2 | tail -n 1
+echo -n "Integration Platform : "
+$1/montavista/bin/mvl-fetch --version | while read A B; do echo $B; done
+GCC=$($(ls $1/montavista/tools/*/bin/*-gcc | head -n 1) --version | head -n 1)
+LEN=$(echo $GCC | cut -d ")" -f 1 | wc -w)
+echo -n "Toolchain            : "
+echo $GCC | cut -d ")" -f 1 | cut -d " " -f $(expr $LEN)
+echo -n "Devrocket            : "
+grep version $1/features/com.mvista.devtools.devrocket.*/feature.xml | cut -d : -f 2 | head -n 2 | tail -n 1 | cut -d '"' -f 2
 
