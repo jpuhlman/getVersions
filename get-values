@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+set -x
+if [ -z "$1" ] ; then
+   echo "Need uri of shar script"
+   exit 1
+else
+   URI=$1
+fi
+
+FN=$(basename $URI)
+wget $URI -O $FN >/log 2>&1
+if [ $? -ne 0 ] ; then
+   cat /log
+   exit 1
+fi
+chmod 755 $FN
+yes | ./$FN -nogui -e /foo -l /montavista  >/log 2>&1
+if [ $? -ne 0 ] ; then
+   cat /log
+   exit 1
+fi
+/lice-kill /montavista/ || true
+/getVersioning /montavista/

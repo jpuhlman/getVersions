@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -n "$1" ] ; then
+ for each in $(find $1 -type d | grep libexec$ | grep -v montavista\/libexec | grep -v sys-root) ; do
+ # ln -s /bin/true $each
+ cp -a $each/* $(dirname $each)/bin/
+ done
+fi

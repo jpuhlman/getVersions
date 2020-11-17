@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -z "$1" ] ; then
+   echo "Need install location"
+   exit 1
+fi
+
+install=$1
+
+
+$1/montavista/bin/mvl-fetch --version
+$(ls $1/montavista/tools/*/bin/*-gcc | head -n 1) --version | head -n 1
+grep version $1/features/com.mvista.devtools.devrocket.*/feature.xml | cut -d : -f 2 | head -n 2 | tail -n 1
+
