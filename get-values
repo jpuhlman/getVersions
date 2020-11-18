@@ -10,6 +10,7 @@ else
 fi
 
 FN=$(basename $URI)
+echo Installer: $FN
 wget $URI -O $FN >/log 2>&1
 if [ $? -ne 0 ] ; then
    cat /log
