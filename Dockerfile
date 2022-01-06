@@ -4,4 +4,4 @@ COPY getVersioning /
 COPY lice-kill /
 COPY get-values /
 RUN chmod 755 getVersioning lice-kill
-ENTRYPOINT /get-values $*
+ENTRYPOINT /bin/bash -x /get-values $*
