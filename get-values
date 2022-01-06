@@ -17,7 +17,7 @@ if [ $? -ne 0 ] ; then
    exit 1
 fi
 chmod 755 $FN
-yes | ./$FN -nogui -e /out/foo -l /out/montavista  >/log 2>&1
+yes | ./$FN -nogui -e /out/foo -l /out/montavista  >/out/log 2>&1
 if [ $? -ne 0 ] ; then
    cat /out/log
    exit 1
