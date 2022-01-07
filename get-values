@@ -1,14 +1,20 @@
 #!/bin/bash
 
 set -e
-set -x
+DEBUG="0"
+if [ "$1" == "-d" ] ; then 
+	DEBUG="1"
+        shift
+fi
 if [ -z "$1" ] ; then
    echo "Need uri of shar script"
    exit 1
 else
    URI=$1
 fi
-
+if [ "$DEBUG" == "1" ] ; then
+   set -x
+fi
 FN=$(basename $URI)
 echo Installer: $FN
 wget $URI -O /out/$FN >/log 2>&1
@@ -16,7 +22,7 @@ if [ $? -ne 0 ] ; then
    cat /out/log
    exit 1
 fi
-chmod 755 $FN
+chmod 755 /out/$FN
 yes | /out/$FN -nogui -e /out/foo -l /out/montavista  >/out/log 2>&1
 if [ $? -ne 0 ] ; then
    cat /out/log
