@@ -17,7 +17,7 @@ if [ "$DEBUG" == "1" ] ; then
 fi
 FN=$(basename $URI)
 echo Installer: $FN
-wget $URI -O /out/$FN >/log 2>&1
+wget $URI -O /out/$FN >/out/log 2>&1
 if [ $? -ne 0 ] ; then
    cat /out/log
    exit 1
