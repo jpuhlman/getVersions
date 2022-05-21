@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+if [ -z "$1" ] ; then
+   echo Need installer
+   exit 1
+fi
+export TMPDIR=$HOME/tmp/
+out=$(mktemp -d)
+echo $out
+docker run --cap-add=SYS_PTRACE -u $(id -u) --rm -v $out:/tmp -it jpuhlman/getversions -- $1
+rm -rf $out
