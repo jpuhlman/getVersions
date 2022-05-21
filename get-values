@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -e
 DEBUG="0"
 if [ "$1" == "-d" ] ; then 
 	DEBUG="1"
