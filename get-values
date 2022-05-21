@@ -18,14 +18,13 @@ FN=$(basename $URI)
 echo Installer: $FN
 wget $URI -O /out/$FN >/out/log 2>&1
 if [ $? -ne 0 ] ; then
-   cat /out/log
+   cat /out/log 1>&2
    exit 1
 fi
 chmod 755 /out/$FN
 yes | /out/$FN -nogui -e /out/foo -l /out/montavista  >/out/log 2>&1
 if [ $? -ne 0 ] ; then
-   cat /out/log
-   exit 1
+   cat /out/log 1>&2
 fi
 /lice-kill /out/montavista/ 2>/dev/null || true
 /getVersioning /out/montavista/
