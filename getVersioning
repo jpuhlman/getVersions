@@ -10,7 +10,7 @@ install=$1
 echo -n "Integration Platform : "
 chmod 755 $1/montavista/bin/*
 $1/montavista/bin/mvl-fetch --version | while read A B; do echo $B; done
-BIN=$(ls $1/montavista/tools/*/bin/*-gcc)
+BIN=$(ls $1/montavista/tools/*/bin/*-gcc*)
 chmod 755 $BIN
 GCC=$($(ls $1/montavista/tools/*/bin/*-gcc | head -n 1) --version | head -n 1)
 LEN=$(echo $GCC | cut -d ")" -f 1 | wc -w)
