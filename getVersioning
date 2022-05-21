@@ -8,8 +8,9 @@ fi
 install=$1
 
 echo -n "Integration Platform : "
-cat  $1/montavista/montavista/bin/mvl-fetch  | grep 'version="%prog' | cut -d '"' -f 2 | while read A B; do echo $B; done
+cat  $1/montavista/bin/mvl-fetch  | grep 'version="%prog' | cut -d '"' -f 2 | while read A B; do echo $B; done
 BIN=$(ls $1/montavista/tools/*/bin/*-gcc*[[:digit:]])
+chmod 755 $BIN
 GCC=$($(ls $1/montavista/tools/*/bin/*-gcc*[[:digit:]] | head -n 1) --version | head -n 1)
 LEN=$(echo $GCC | cut -d ")" -f 1 | wc -w)
 echo -n "Toolchain            : "
