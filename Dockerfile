@@ -1,5 +1,5 @@
 From centos:7
-RUN yum -y install sharutils wget 
+RUN yum -y install sharutils wget bzip2
 COPY getVersioning /
 COPY lice-kill /
 COPY get-values /
