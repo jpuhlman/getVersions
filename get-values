@@ -16,17 +16,17 @@ if [ "$DEBUG" == "1" ] ; then
 fi
 FN=$(basename $URI)
 echo Installer: $FN
-wget $URI -O /out/$FN >/out/log 2>&1
+wget $URI -O /tmp/$FN >/tmp/log 2>&1
 if [ $? -ne 0 ] ; then
-   cat /out/log 1>&2
+   cat /tmp/log 1>&2
    exit 1
 fi
-chmod 755 /out/$FN
-yes | /out/$FN -nogui -e /out/foo -l /out/montavista  >/out/log 2>&1
+chmod 755 /tmp/$FN
+yes | /tmp/$FN -nogui -e /tmp/foo -l /tmp/montavista  >/tmp/log 2>&1
 if [ $? -ne 0 ] ; then
-   cat /out/log 1>&2
+   cat /tmp/log 1>&2
 fi
-/lice-kill /out/montavista/ 2>/dev/null || true
-/getVersioning /out/montavista/
-rm /out/* -rf
+/lice-kill /tmp/montavista/ 2>/dev/null || true
+/getVersioning /tmp/montavista/
+rm /tmp/* -rf
 
