@@ -17,4 +17,3 @@ echo -n "Toolchain            : "
 echo $GCC | cut -d ")" -f 1 | cut -d " " -f $(expr $LEN)
 echo -n "Devrocket            : "
 grep version $1/features/com.mvista.devtools.devrocket.*/feature.xml | cut -d : -f 2 | head -n 2 | tail -n 1 | cut -d '"' -f 2
-sleep 6000
